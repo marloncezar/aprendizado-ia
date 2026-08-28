@@ -15,12 +15,12 @@
 |---------|-------|
 | **Fase Atual** | LLMs & Prompting |
 | **Semana Atual** | 1 |
-| **Horas Investidas** | 0h |
+| **Horas Investidas** | ~2h |
 | **Meta Semanal** | 5-15h (seu ritmo) |
 | **Timeline Total** | 16 semanas |
 | **Próximo Milestone** | Semana 4 - Primeiro Freelancer |
 
-**Status do Repositório**: 🔄 Em Setup
+**Status do Repositório**: 🔄 Semana 1 concluída
 
 ---
 
@@ -41,31 +41,47 @@
 
 #### Semana 1: Fundamentos de LLMs
 **Data**: 27/08 - 02/09  
-**Status**: 🔄 Em Progresso  
+**Status**: ✅ Concluído  
 **Tempo Planejado**: 8h
 
 **Objetivos**:
-- [ ] Entender o que é um LLM
-- [ ] Aprender sobre Transformers (visão prática)
-- [ ] Conhecer Claude, GPT-4 e outros modelos
-- [ ] Compreender tokens e contexto
-- [ ] Fazer primeira API call com Claude
+- [x] Entender o que é um LLM
+- [x] Aprender sobre Transformers (visão prática)
+- [x] Conhecer Claude, GPT-4 e outros modelos
+- [x] Compreender tokens e contexto
+- [x] Fazer primeira API call (feita com Gemini, no lugar de Claude — ver nota abaixo)
 
 **Recursos**:
 - [Hugging Face Course - Transformers](https://huggingface.co/learn)
 - [Claude Official Docs](https://docs.claude.com)
+- [Gemini API Docs](https://ai.google.dev/gemini-api/docs) (usado na prática por ter tier gratuito)
 - DeepLearning.AI - LLM Basics
 
 **Código Resultado**:
-```python
-# Você vai adicionar seu código aqui após praticar
+```bash
+curl "https://generativelanguage.googleapis.com/v1beta/models/gemini-flash-latest:generateContent" \
+  --header "x-goog-api-key: $GEMINI_API_KEY" \
+  --header "Content-Type: application/json" \
+  --data '{
+    "contents": [
+      {"parts": [{"text": "Explique o que é um LLM em uma frase"}]}
+    ]
+  }'
 ```
+Chave configurada localmente via `.env` (com `.gitignore` protegendo o arquivo). Resposta recebida com sucesso, `finishReason: STOP`.
 
 **Aprendizados Principais**:
-- (Você vai preenchendo conforme aprende)
+- LLM é uma função `f(tokens) -> distribuição de probabilidade sobre o próximo token`; geração de texto é um loop autoregressivo (saída de uma chamada vira entrada da próxima)
+- Tokens são subpalavras (BPE), não palavras inteiras; context window é o limite de tokens que o modelo "enxerga" numa chamada
+- Atenção (mecanismo central do Transformer) funciona via Query/Key/Value: cada token calcula sua relevância para todos os outros via produto escalar, normalizado por softmax — permite acesso direto a qualquer posição da sequência, sem depender de uma cadeia sequencial (diferença chave frente a RNNs)
+- Multi-head attention roda várias "buscas" especializadas em paralelo; custo cresce O(n²) com o tamanho do contexto
+- Panorama de modelos muda rápido: famílias com camadas de custo/capacidade (Claude: Haiku/Sonnet/Opus/Fable; GPT: Luna/Terra/Sol) — benchmarks (MMLU, SWE-bench, FrontierMath etc.) servem como triagem inicial, não como decisão final
+- Claude API é pay-as-you-go sem tier gratuito permanente; Gemini API, Groq, OpenRouter e Mistral têm tiers gratuitos genuínos (com o trade-off de que os dados geralmente são usados para treino)
+- Diferença prática entre erro 4xx (problema na requisição do cliente) e 5xx (problema do servidor, ex: 503 por sobrecarga) — vivenciado na prática numa chamada real
+- Modelos de raciocínio (ex: Gemini 3.7 Flash) gastam tokens "pensando" internamente (`thoughtsTokenCount`) antes de responder — pode superar em muito o tamanho da resposta visível, e isso é cobrado mesmo sem aparecer no texto final
 
 **Dúvidas Atuais**:
-- [ ] 
+- [ ] Nenhuma pendente — revisitar batching/prompt caching quando o tema de custo em produção voltar a aparecer
 
 **Próximo Passo**: Estudar Prompt Engineering
 
@@ -260,9 +276,9 @@
 ## 🎓 Conhecimento Adquirido por Tema
 
 ### LLMs & Prompting
-- Status: 🔄 Iniciando
-- Confiança: 1/10
-- Próximo: Estudar Transformers
+- Status: 🔄 Fundamentos concluídos (Semana 1)
+- Confiança: 4/10
+- Próximo: Prompt Engineering (Semana 2)
 
 ### RAG
 - Status: ⏳ Não iniciado
@@ -282,10 +298,10 @@
 ## 📊 Estatísticas de Progresso
 
 ```
-Semanas Completadas: 0/16
+Semanas Completadas: 1/16
 Projetos Completos: 0
 Projetos em Progresso: 0
-Horas Totais: 0h / ~200h
+Horas Totais: ~2h / ~200h
 Freelancers Completados: 0
 ```
 
@@ -293,14 +309,14 @@ Freelancers Completados: 0
 
 ## 🔔 Próximas Ações
 
-**SEMANA 1 (AGORA)**:
-1. [ ] Estudar Transformers (2h)
-2. [ ] Fazer 1ª API call (1h)
-3. [ ] Entender tokens e contexto (1h)
-4. [ ] Fazer 1º projeto (4h)
+**SEMANA 1 (CONCLUÍDA)**:
+1. [x] Estudar Transformers (2h)
+2. [x] Fazer 1ª API call (1h)
+3. [x] Entender tokens e contexto (1h)
+4. [ ] Fazer 1º projeto (4h) — não obrigatório na Semana 1 conforme currículo original; mover para Semana 3 se aplicável
 
 **Após Semana 1**:
-1. [ ] Atualizar este arquivo
+1. [x] Atualizar este arquivo
 2. [ ] Fazer push ao GitHub
 3. [ ] Preparar Semana 2
 
@@ -313,7 +329,7 @@ Freelancers Completados: 0
 
 ---
 
-**Última Atualização**: 27/08/2026  
+**Última Atualização**: 27/08/2026 (Semana 1 concluída)  
 **Próxima Revisão**: 02/09/2026
 
 ---
