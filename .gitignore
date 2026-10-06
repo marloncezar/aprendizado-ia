@@ -1,2 +1,6 @@
 .env
 __pycache__/
+
+# Planos derivam de documentos internos da IMA: ficam só na máquina
+semana-3/planos/*
+!semana-3/planos/.gitkeep

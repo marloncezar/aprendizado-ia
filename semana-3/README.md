@@ -5,8 +5,7 @@
 
 ## Objetivo
 Usar o fluxo **planejar → aprovar → executar** das Diretrizes IMA (Claude Code, sem API própria) para entregar histórias da Fase 0 do backlog:
-- **F0-05** — índice único parcial: uma versão `vigente` por cliente/exercício/tipo
-- **F0-06** — executar o DDL em PostgreSQL de teste, papéis (`elo_owner`, `elo_app` sem `BYPASSRLS`, `elo_provisionamento`) e RLS
+- ~~F0-05 e F0-06~~: o time já havia entregue; trocadas pela **F1-06** — papéis locais, permissões globais, vínculo de papel e de UG (**concluída**)
 - (F0-03, matriz de versões, já definida pelo time — ver `ambiente.md`)
 
 ## Regras de segurança (código da IMA não é meu)
@@ -28,4 +27,4 @@ Usar o fluxo **planejar → aprovar → executar** das Diretrizes IMA (Claude Co
 - `planos/` — plano de cada história
 
 ## Critério de pronto
-Ao menos F0-05 e F0-06 entregues (MR aberto) com testes, mais registro de prompts e erros do LLM.
+**Atingido (06/10/2026):** F1-06 entregue com testes, publicada no GitLab da IMA (`mrodrigues` e `desenvolvimento`), com registro de prompts (`prompts/`) e dos erros do LLM (`PROGRESSO.md`). O merge foi direto em `desenvolvimento`; não houve MR formal.

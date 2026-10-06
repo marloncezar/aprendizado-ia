@@ -14,13 +14,13 @@
 | Métrica | Valor |
 |---------|-------|
 | **Fase Atual** | LLMs & Prompting |
-| **Semana Atual** | 3 |
-| **Horas Investidas** | ~2h |
+| **Semana Atual** | 3 (concluída) |
+| **Horas Investidas** | ~12h |
 | **Meta Semanal** | 5-15h (seu ritmo) |
 | **Timeline Total** | 16 semanas |
 | **Próximo Milestone** | Semana 4 - Primeiro Freelancer |
 
-**Status do Repositório**: 🔄 Semana 3 em andamento
+**Status do Repositório**: ✅ Semana 3 concluída
 
 ---
 
@@ -263,8 +263,8 @@ Pergunta que surgiu organicamente na Semana 2: como se proteger de prompt inject
 
 #### Semana 3: Projeto Prático LLMs
 **Data**: 10/09 - 16/09 (iniciada em 06/10/2026, no meu ritmo)  
-**Status**: 🔄 Em andamento  
-**Tempo Planejado**: 10h
+**Status**: ✅ Concluído (06/10/2026)  
+**Tempo Planejado**: 10h | **Tempo Real**: 10h
 
 **Objetivo**: Escolher UM problema real seu como dev e resolver com LLM
 
@@ -272,7 +272,7 @@ Pergunta que surgiu organicamente na Semana 2: como se proteger de prompt inject
 
 **Projeto**: conduzir histórias da Fase 0 do backlog com o fluxo planejar → aprovar → executar das Diretrizes IMA (Claude Code, sem API própria):
 - [x] ~~F0-05 e F0-06~~ — já entregues pelo time antes de eu chegar; escolhida a **F1-06** (papéis, permissões e vínculos de UG)
-- [x] F1-06 — implementada na branch `mrodrigues` (5 commits, 80 specs verdes, ainda sem MR)
+- [x] F1-06 — implementada e publicada (`mrodrigues` → `desenvolvimento`), 87 specs verdes, rubocop/brakeman/bundler-audit limpos. Merge direto, sem MR formal
 - [x] Configurar ambiente local (Ruby 4.0.5, Rails 8.1.4, Node 24.21.0, Angular CLI 22.2.1, TypeScript 6.0.3 instalados; PostgreSQL 18.6 via Docker) — ver `semana-3/ambiente.md`
 
 **Regras de segurança**: código/docs do `elo_api` ficam fora deste repositório (são da IMA); nada de API externa com treino sobre os dados (ex.: Gemini gratuito) sem aval do time; entregas por merge request no GitLab da IMA. Aqui entram só planos, prompts e aprendizados.
@@ -370,14 +370,14 @@ Pergunta que surgiu organicamente na Semana 2: como se proteger de prompt inject
 
 (Você vai atualizando conforme conclui)
 
-### Projeto 1: [Nome do Projeto]
-- **Descrição**: 
-- **Tech Stack**: Python + Claude API / LangChain
-- **Status**: [ ] Planejado [ ] Em Progresso [ ] Completo
-- **Repositório**: [Link]
-- **Demo**: [Link (se houver)]
-- **Aprendizados Principais**: 
-- **Tempo Investido**: Xh
+### Projeto 1: Controle de acesso do Novo ELO (história F1-06)
+- **Descrição**: papéis locais, permissões globais e vínculos de papel e de UG em um sistema multicliente, com endpoints para o administrador do cliente e para o administrador geral, conduzido com LLM (planejar → executar com teste primeiro → revisão adversarial)
+- **Tech Stack**: Ruby 4.0.7 + Rails 8.1.4 + PostgreSQL 18.6 (RLS) + Pundit + RSpec
+- **Status**: [ ] Planejado [ ] Em Progresso [x] Completo
+- **Repositório**: privado (GitLab da IMA); aqui ficam só prompts e aprendizados
+- **Demo**: —
+- **Aprendizados Principais**: ver "Aprendizados da Semana 3" (teste que nunca falhou não prova nada; contexto de segurança por parâmetro, não estado global; reler o ADR antes de recomendar)
+- **Tempo Investido**: 10h
 
 ---
 
@@ -437,9 +437,9 @@ Pergunta que surgiu organicamente na Semana 2: como se proteger de prompt inject
 ## 🎓 Conhecimento Adquirido por Tema
 
 ### LLMs & Prompting
-- Status: ✅ Fundamentos + Prompt Engineering concluídos (Semanas 1-2)
-- Confiança: 6/10
-- Próximo: Projeto Prático LLMs (Semana 3) — histórias F0-05/F0-06 do `elo_api` (Rails) com LLM
+- Status: ✅ Fundamentos + Prompt Engineering + Projeto Prático concluídos (Semanas 1-3)
+- Confiança: 9/10
+- Próximo: Semana 4 — Primeiro Freelancer
 
 ### RAG
 - Status: ⏳ Não iniciado
@@ -459,10 +459,10 @@ Pergunta que surgiu organicamente na Semana 2: como se proteger de prompt inject
 ## 📊 Estatísticas de Progresso
 
 ```
-Semanas Completadas: 2/16
-Projetos Completos: 0
+Semanas Completadas: 3/16
+Projetos Completos: 1
 Projetos em Progresso: 0
-Horas Totais: ~2h / ~200h
+Horas Totais: ~12h / ~200h
 Freelancers Completados: 0
 ```
 
@@ -486,10 +486,16 @@ Freelancers Completados: 0
 2. [ ] Fazer push ao GitHub
 3. [x] Preparar Semana 3 (escopo mudou: `elo_api` em Rails, ver `semana-3/README.md`)
 
-**SEMANA 3 (EM ANDAMENTO)**:
+**SEMANA 3 (CONCLUÍDA)**:
 1. [x] Configurar ambiente local (ver `semana-3/ambiente.md`)
 2. [x] Plano e execução da F1-06 (branch `mrodrigues`)
-3. [ ] Abrir MR da F1-06, tratar revisão do time e registrar o resultado
+3. [x] Publicar a F1-06 (merge direto em `desenvolvimento`; revisão do time opcional)
+4. [x] Registrar prompts (`semana-3/prompts/`) e aprendizados
+
+**Após Semana 3**:
+1. [x] Atualizar este arquivo
+2. [ ] Fazer push ao GitHub
+3. [ ] Preparar Semana 4 (primeiro freelancer na Workana)
 
 ---
 
@@ -500,7 +506,7 @@ Freelancers Completados: 0
 
 ---
 
-**Última Atualização**: 06/10/2026 (Semana 3 iniciada)  
+**Última Atualização**: 06/10/2026 (Semana 3 concluída)  
 **Próxima Revisão**: 09/09/2026
 
 ---
