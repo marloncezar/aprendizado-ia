@@ -271,13 +271,23 @@ Pergunta que surgiu organicamente na Semana 2: como se proteger de prompt inject
 **Mudança de escopo**: o projeto original (migração Delphi → Java Spring Boot) foi substituído. O objeto de estudo agora é o **Novo ELO (`elo_api`, IMA)**: sistema novo em **Ruby on Rails**, onde o legado Delphi serve só como fonte de regra de negócio (já consolidada nos ADRs). Não há migração de código nem de dados.
 
 **Projeto**: conduzir histórias da Fase 0 do backlog com o fluxo planejar → aprovar → executar das Diretrizes IMA (Claude Code, sem API própria):
-- [ ] F0-05 — índice único parcial: uma versão `vigente` por cliente/exercício/tipo
-- [ ] F0-06 — executar o DDL em PostgreSQL de teste, papéis e RLS
+- [x] ~~F0-05 e F0-06~~ — já entregues pelo time antes de eu chegar; escolhida a **F1-06** (papéis, permissões e vínculos de UG)
+- [x] F1-06 — implementada na branch `mrodrigues` (5 commits, 80 specs verdes, ainda sem MR)
 - [x] Configurar ambiente local (Ruby 4.0.5, Rails 8.1.4, Node 24.21.0, Angular CLI 22.2.1, TypeScript 6.0.3 instalados; PostgreSQL 18.6 via Docker) — ver `semana-3/ambiente.md`
 
 **Regras de segurança**: código/docs do `elo_api` ficam fora deste repositório (são da IMA); nada de API externa com treino sobre os dados (ex.: Gemini gratuito) sem aval do time; entregas por merge request no GitLab da IMA. Aqui entram só planos, prompts e aprendizados.
 
-**Resultado esperado**: MR com F0-05 e F0-06 + testes, e registro dos prompts usados e dos erros do LLM. Detalhes em `semana-3/README.md`.
+**Resultado esperado**: MR com a F1-06 + testes, e registro dos prompts usados e dos erros do LLM. Detalhes em `semana-3/README.md`.
+
+**Aprendizados da Semana 3 (F1-06 com LLM)**:
+- **Planejar antes de codar valeu**: ler docs/ADRs/código e levar perguntas ao time (papéis, escopo, quem administra o quê) evitou retrabalho. O plano ficou só na máquina por conter conteúdo interno da IMA.
+- **O LLM errou, e o teste pegou**: a auditoria lia o `cliente_id` de um atributo de thread (`CurrentAttributes`) que ninguém preenchia; gravaria o cliente errado. Só apareceu porque o spec cobria dois clientes e uma thread. Regra: contexto de segurança passa por parâmetro explícito, não por estado global.
+- **O LLM também errou na análise**: recomendei uma opção de acesso do administrador geral que contrariava o ADR-0005; o humano escolheu a outra, que era a do ADR. Sempre reler o ADR antes de recomendar.
+- **Teste que nunca falhou não prova nada**: validei com mutação (policy sempre permitindo → 3 falhas de 403; sem `set_config` → 15 de 15 falham; sem `FOR UPDATE` → teste de concorrência falha 4 de 4). Vale fazer isso em código de autorização, onde o erro é silencioso.
+- **Concorrência**: "o último administrador nunca fica sem titular" só é garantido com trava de linha (`FOR UPDATE`) antes de contar; sem ela, duas remoções simultâneas zeram o cliente.
+- **Menor privilégio no banco**: o papel do administrador geral ganhou só os GRANTs necessários, e há spec do que ele *não* pode fazer (apagar papel, ler tabela de negócio, escrever catálogo).
+- **Ambiente come tempo**: firewall do host bloqueando a rede do Docker, `pg_dump` 16 contra servidor 18 regenerando `structure.sql` de forma incompatível, e recriar um banco de teste apagando GRANTs do bootstrap. Registrado em `semana-3/ambiente.md`.
+- **Achado fora do escopo**: `bundler-audit` aponta CVE no `jwt 3.1.2` (pin do time) e há 1 offense de rubocop em arquivo alheio; avisar o time em vez de mexer.
 
 ---
 
@@ -478,8 +488,8 @@ Freelancers Completados: 0
 
 **SEMANA 3 (EM ANDAMENTO)**:
 1. [x] Configurar ambiente local (ver `semana-3/ambiente.md`)
-2. [ ] Plano e execução da F0-05
-3. [ ] Plano e execução da F0-06
+2. [x] Plano e execução da F1-06 (branch `mrodrigues`)
+3. [ ] Abrir MR da F1-06, tratar revisão do time e registrar o resultado
 
 ---
 
