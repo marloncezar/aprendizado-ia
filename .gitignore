@@ -4,3 +4,5 @@ __pycache__/
 # Planos derivam de documentos internos da IMA: ficam só na máquina
 semana-3/planos/*
 !semana-3/planos/.gitkeep
+# Exceção: versão pública do passo a passo da F1-09 (sem conteúdo interno). O original é f1-09.interno.md, ignorado.
+!semana-3/planos/f1-09.md
