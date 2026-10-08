@@ -289,8 +289,6 @@ Pergunta que surgiu organicamente na Semana 2: como se proteger de prompt inject
 - **Ambiente come tempo**: firewall do host bloqueando a rede do Docker, `pg_dump` 16 contra servidor 18 regenerando `structure.sql` de forma incompatível, e recriar um banco de teste apagando GRANTs do bootstrap. Registrado em `semana-3/ambiente.md`.
 - **Achado fora do escopo**: `bundler-audit` aponta CVE no `jwt 3.1.2` (pin do time) e há 1 offense de rubocop em arquivo alheio; avisar o time em vez de mexer.
 
-**Continuação (07–08/10/2026): F1-09, shell Angular do `elo_app`** — concluída em 08/10/2026 (10 de 10). Entregues: pré-requisitos no backend (contrato OpenAPI, CSRF acessível, endpoint de perfil), proxy de desenvolvimento, banner de ambiente, componentes de `shared/` com axe, cliente OpenAPI gerado, `core/sessao` e guards/rotas com foco e título por página telas de login e recuperação de senha, escolha de UG e layout com cabeçalho. cobertura de 98%, bateria de 28 testes em navegador real (Playwright, só local) e documentação. Merge direto em `desenvolvimento` nos dois repositórios, sem MR formal. Passo a passo e aprendizados em `semana-3/planos/f1-09.md` (versão pública, sem conteúdo interno da IMA).
-
 ---
 
 ### **BLOCO 2: RAG (Semanas 7-9)**
@@ -380,15 +378,6 @@ Pergunta que surgiu organicamente na Semana 2: como se proteger de prompt inject
 - **Demo**: —
 - **Aprendizados Principais**: ver "Aprendizados da Semana 3" (teste que nunca falhou não prova nada; contexto de segurança por parâmetro, não estado global; reler o ADR antes de recomendar)
 - **Tempo Investido**: 10h
-
-### Projeto 2: Shell Angular do Novo ELO (história F1-09)
-- **Descrição**: login, sessão em memória, seleção de UG e layout acessível mobile-first no frontend do Novo ELO, com cliente gerado do OpenAPI e pré-requisitos no backend
-- **Tech Stack**: Angular 22.2.1 + TypeScript 6.0.3 + Vitest/jsdom + axe-core + @hey-api/openapi-ts; no backend, rswag-specs
-- **Status**: [ ] Planejado [ ] Em Progresso [x] Completo
-- **Repositório**: privado (GitLab da IMA); aqui ficam só planos, prompts e aprendizados
-- **Demo**: —
-- **Aprendizados Principais**: ver `semana-3/planos/f1-09.md`
-- **Tempo Investido**: a registrar ao concluir
 
 ---
 
