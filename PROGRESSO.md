@@ -289,6 +289,8 @@ Pergunta que surgiu organicamente na Semana 2: como se proteger de prompt inject
 - **Ambiente come tempo**: firewall do host bloqueando a rede do Docker, `pg_dump` 16 contra servidor 18 regenerando `structure.sql` de forma incompatível, e recriar um banco de teste apagando GRANTs do bootstrap. Registrado em `semana-3/ambiente.md`.
 - **Achado fora do escopo**: `bundler-audit` aponta CVE no `jwt 3.1.2` (pin do time) e há 1 offense de rubocop em arquivo alheio; avisar o time em vez de mexer.
 
+**Continuação (07–08/10/2026): F1-09, shell Angular do `elo_app`** — em andamento, **passo 5 de 10**. Entregues: pré-requisitos no `elo_api` (OpenAPI, CSRF no corpo, `/sessao/atual`), proxy do `ng serve`, banner de ambiente, componentes de `shared/` com axe, cliente OpenAPI gerado e `core/sessao`. Faltam guards e rotas, telas, UG, layout, viewports e MR. Passo a passo, commits e erros do LLM em `semana-3/planos/f1-09.md` (seção 10).
+
 ---
 
 ### **BLOCO 2: RAG (Semanas 7-9)**
@@ -378,6 +380,15 @@ Pergunta que surgiu organicamente na Semana 2: como se proteger de prompt inject
 - **Demo**: —
 - **Aprendizados Principais**: ver "Aprendizados da Semana 3" (teste que nunca falhou não prova nada; contexto de segurança por parâmetro, não estado global; reler o ADR antes de recomendar)
 - **Tempo Investido**: 10h
+
+### Projeto 2: Shell Angular do Novo ELO (história F1-09)
+- **Descrição**: login, sessão em memória, seleção de UG e layout acessível mobile-first no frontend do Novo ELO, com cliente gerado do OpenAPI e pré-requisitos no backend
+- **Tech Stack**: Angular 22.2.1 + TypeScript 6.0.3 + Vitest/jsdom + axe-core + @hey-api/openapi-ts; no backend, rswag-specs
+- **Status**: [ ] Planejado [x] Em Progresso [ ] Completo (passo 5 de 10)
+- **Repositório**: privado (GitLab da IMA); aqui ficam só planos, prompts e aprendizados
+- **Demo**: —
+- **Aprendizados Principais**: ver `semana-3/planos/f1-09.md` (seção 10)
+- **Tempo Investido**: a registrar ao concluir
 
 ---
 
